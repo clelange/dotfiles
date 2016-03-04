@@ -2,5 +2,5 @@ README.md skip
 .ssh recurse
 
 install_prezto.sh exec
-install_prezto skip
+install_prezto.sh skip
 prompt_clange_setup skip
