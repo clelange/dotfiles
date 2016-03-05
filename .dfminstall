@@ -4,3 +4,8 @@ README.md skip
 install_prezto.sh exec
 install_prezto.sh skip
 prompt_clange_setup skip
+
+setup.sh exec
+setup.sh skip
+setup_darwin.sh skip
+system_darwin.sh skip
