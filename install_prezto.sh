@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-ln -s ~/dotfiles/prompt_clange_setup ~/.zprezto/modules/prompt/functions/prompt_clange_setup
+ln -sf ~/dotfiles/prompt_clange_setup ~/.zprezto/modules/prompt/functions/prompt_clange_setup
 
 [[ -d ~/.zprezto ]] && exit
 

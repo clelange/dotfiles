@@ -9,3 +9,4 @@ setup.sh exec
 setup.sh skip
 setup_darwin.sh skip
 system_darwin.sh skip
+Brewfile skip

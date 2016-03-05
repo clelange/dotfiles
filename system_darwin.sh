@@ -1,3 +1,7 @@
+#!/bin/zsh
+
+echo "Running system settings adjustment"
+
 # Ask for the administrator password upfront
 sudo -v
 

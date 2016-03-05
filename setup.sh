@@ -1,6 +1,9 @@
 #!/bin/zsh
 
-platform=$(uname | awk '{print tolower($0)}')
-[[ -f "setup_$platform" ]] && source "./setup_$platform"
+echo "running setup.sh"
+DOTDIR=".dotfiles"
 
-[[ -f "system_$platform" ]] && source "./system_$platform"
+platform=$(uname | awk '{print tolower($0)}')
+[[ -f "./${DOTDIR}/setup_${platform}.sh" ]] && source "./${DOTDIR}/setup_${platform}.sh"
+
+[[ -f "./${DOTDIR}/system_${platform}.sh" ]] && source "./${DOTDIR}/system_${platform}.sh"
