@@ -54,6 +54,11 @@ function synergyhost {
  sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/Release/synergys --config ~/.synergy/tmp.conf
 }
 
+# setup ROOT
+# for ROOT5
+# pushd $(brew --prefix root) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
+# for ROOT6
+pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
 # single window mode
 singleWindowOn="defaults write com.apple.dock single-app -bool true; killall Dock"
