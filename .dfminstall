@@ -7,6 +7,12 @@ prompt_clange_setup skip
 
 setup.sh exec
 setup.sh skip
+
+install_rmate.sh exec
+install_rmate.sh skip
+
 setup_darwin.sh skip
 system_darwin.sh skip
+setup_darwin.installed skip
+system_darwin.installed skip
 Brewfile skip

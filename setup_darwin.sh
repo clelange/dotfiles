@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+
 chsh -s $(which zsh)
 
 [[ -f "/usr/local/bin/brew" ]] && echo "Homebrew already installed" && return
