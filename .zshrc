@@ -5,7 +5,6 @@ fi
 
 # Customize to your needs...
 export EDITOR="/usr/local/bin/mate -w"
-export PATH=${HOME}/anaconda2/bin:${PATH}
 export VISUAL=$EDITOR
 export LSCOLORS="exfxcxdxbxegedabagacad"
 
@@ -60,11 +59,16 @@ function synergyhost {
 # for ROOT6
 pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
 # single window mode
 singleWindowOn="defaults write com.apple.dock single-app -bool true; killall Dock"
 singleWindowOff="defaults write com.apple.dock single-app -bool false; killall Dock"
 
-export PYTHONPATH=$PYTHONPATH:$HOME/Library/Python/2.7/site-packages
+# export PYTHONPATH=$PYTHONPATH:$HOME/Library/Python/2.7/site-packages
+# export PYTHONPATH="/System/Library/Frameworks/Python.framework/Versions/Current/Extras/lib/python/"
 
 KRB5_CONFIG=~/scripts/CERNkrb5.conf
 
@@ -100,6 +104,6 @@ function playmidi {
 }
 
 # Customize to your needs...
-export PATH=$HOME/anaconda/bin:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/root/current/bin:/opt/local/bin:/opt/local/sbin:/opt/ldg/bin:/opt/ldg/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin:$HOME/bin:$HOME/cms-git-tools:
+export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$HOME/cms-git-tools
 
 . $HOME/.shellrc.load

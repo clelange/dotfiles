@@ -11,3 +11,6 @@ cask "atom"
 cask "textmate"
 cask "skype"
 cask "vlc"
+
+tap "caskroom/fonts"
+cask "font-hack"

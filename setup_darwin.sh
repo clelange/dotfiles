@@ -22,3 +22,6 @@ brew tap davidchall/hep
 brew bundle Brewfile
 
 brew install root6
+# pyenv
+brew install pyenv
+brew install pyenv-virtualenv
