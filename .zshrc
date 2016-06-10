@@ -46,10 +46,12 @@ alias pilot="ssh -Y vmepc-s2b18-08-01.cms"
 alias anapix="ssh -Y srv-c2f38-15-01.cms"
 alias superpix="ssh -Y srv-s2b18-10-01.cms"
 alias diskpix="ssh -Y srv-c2f38-16-01.cms"
+alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
 
 # synergy
 function synergyhost {
  MYHOSTNAME=`hostname`;
+ rm -f /Users/clange/.synergy/tmp.conf;
  sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/Release/synergys --config ~/.synergy/tmp.conf
 }
 
@@ -85,22 +87,22 @@ function playmidi {
     SOUNDFONT='/usr/local/share/fluidsynth/generaluser.v.1.44.sf2'
 
     if [ -e "$SOUNDFONT" ]
-    then 
+    then
 
         for i in "$@"
-        do 
+        do
             if [ -e "$i" ]
             then
                 (fluidsynth -i "$SOUNDFONT" "$i"  2>&1) >/dev/null
             else
-                echo "[playmidi]: cannot find file at $i"   
+                echo "[playmidi]: cannot find file at $i"
                 return 1
-            fi  
-        done 
+            fi
+        done
     else
             echo "[playmidi]: SOUNDFONT file not found at $SOUNDFONT"
             return 1
-    fi  
+    fi
 }
 
 # Customize to your needs...
