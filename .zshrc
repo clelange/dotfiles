@@ -52,7 +52,7 @@ alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
 function synergyhost {
  MYHOSTNAME=`hostname`;
  rm -f /Users/clange/.synergy/tmp.conf;
- sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/Release/synergys --config ~/.synergy/tmp.conf
+ sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/synergys --config ~/.synergy/tmp.conf
 }
 
 # setup ROOT
@@ -109,3 +109,12 @@ function playmidi {
 export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$HOME/cms-git-tools
 
 . $HOME/.shellrc.load
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+function voms() {
+  voms-proxy-init -voms cms --valid 168:0
+  VOMSPROXY=`voms-proxy-info -path`
+  cp $VOMSPROXY $HOME/`basename $VOMSPROXY`
+  export X509_USER_PROXY=$HOME/`basename $VOMSPROXY`
+}
