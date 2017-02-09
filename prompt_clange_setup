@@ -107,6 +107,14 @@ function prompt_clange_setup {
   # Add hook for calling git-info before each command.
   add-zsh-hook precmd prompt_clange_precmd
 
+  # python virtualenv
+  if (( $+functions[python-info] )); then
+    python-info
+  fi
+
+  # Set python-info parameters.
+  zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
+
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{1}❯%F{3}❯%F{2}❯%f%b'
@@ -134,7 +142,7 @@ function prompt_clange_setup {
     'status' '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%C%D%U%u'
 
   # Define prompts.
-  PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_clange_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
+  PROMPT='$python_info[virtualenv]${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_clange_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
   RPROMPT=''
   SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 }

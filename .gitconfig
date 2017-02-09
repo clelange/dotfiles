@@ -1,7 +1,7 @@
 [user]
 	name = Clemens Lange
-	email = clemens.lange@cern.ch
 	github = clelange
+	email = clemens.lange@cern.ch
 [alias]
 	a = add
 	ap = add --patch
@@ -16,6 +16,8 @@
 	ll = log --graph --abbrev-commit --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(green)%ar %C(yellow)%an%C(bold yellow)%d%C(reset)%n        %C(white)%s%n' -10 HEAD~6..HEAD
 	lf = log --pretty=fuller
 	ls = log --pretty=fuller --stat
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	s = status
 	d = diff
 	ds = diff --stat
@@ -35,10 +37,15 @@
 	editor = vim
 	autocrlf = false
 	safecrlf = true
+	excludesfile = /Users/clange/.gitignore_global
 [push]
 	default = simple
 [color]
 	ui = auto
+	branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 
 [filter "media"]
 	clean = git media clean %f
@@ -48,3 +55,11 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/clange/.stCommitMsg

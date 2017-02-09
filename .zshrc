@@ -24,14 +24,13 @@ bindkey "^I" expand-or-complete-with-dots
 # alias ssh="ln -fs $(echo $DISPLAY | sed 's:\(/private/tmp/com\.apple\.launchd\.[^/]*\)/.*:\1:') $(echo $DISPLAY | sed 's:/private/tmp/com\.apple\.launchd\.\([^/]*\)/.*:/private/tmp/launch-\1:'); ssh -Y"
 alias lxplus="ssh -Y lxplus.cern.ch"
 alias lxplus5="ssh -Y lxplus5.cern.ch"
-alias psi5="ssh -Y t3ui05.psi.ch"
-alias psi="ssh -Y t3ui15.psi.ch"
+alias psi15="ssh -Y t3ui15.psi.ch"
+alias psi="ssh -Y t3ui03.psi.ch"
 alias bastion="ssh -Y bastion.desy.de"
 alias atlnaf="~/scripts/naflogin.sh"
-alias cmsnaf="~/scripts/cmsnaf.sh"
 alias atlnaftoken="sh ~/scripts/naf_token.sh $USER"
 alias cmsnaftoken="sh ~/scripts/cmsnaf_token.sh cmslange"
-alias cmsnaf2="ssh -Y nafhh-cms05.desy.de"
+alias cmsnaf="ssh -Y naf-cms.desy.de"
 alias cmsnafSLC5="ssh -Y nafhh-cms01.desy.de"
 alias atlnaf2="ssh -Y nafhh-atlas01.desy.de"
 alias pixcr="ssh -Y pc4634.cern.ch"
@@ -47,12 +46,13 @@ alias anapix="ssh -Y srv-c2f38-15-01.cms"
 alias superpix="ssh -Y srv-s2b18-10-01.cms"
 alias diskpix="ssh -Y srv-c2f38-16-01.cms"
 alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
+alias iniconda2="export PATH=/Users/clange/anaconda2/bin:$PATH"
 
 # synergy
 function synergyhost {
  MYHOSTNAME=`hostname`;
  rm -f /Users/clange/.synergy/tmp.conf;
- sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/synergys --config ~/.synergy/tmp.conf
+ sed "s/CERNHOST/${MYHOSTNAME}/" ~/.synergy/cern.conf > ~/.synergy/tmp.conf; $HOME/synergy/bin/Release/synergys --config ~/.synergy/tmp.conf
 }
 
 # setup ROOT
@@ -62,8 +62,8 @@ function synergyhost {
 pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
 # pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # single window mode
 singleWindowOn="defaults write com.apple.dock single-app -bool true; killall Dock"
@@ -118,3 +118,14 @@ function voms() {
   cp $VOMSPROXY $HOME/`basename $VOMSPROXY`
   export X509_USER_PROXY=$HOME/`basename $VOMSPROXY`
 }
+
+setTerminalText () {
+    # echo works in bash & zsh
+    local mode=$1 ; shift
+    echo -ne "\033]$mode;$@ ${HOST}\007"
+}
+stt_both  () { setTerminalText 0 $@; }
+stt_tab   () { setTerminalText 1 $@; }
+stt_title () { setTerminalText 2 $@; }
+
+stt_tab
