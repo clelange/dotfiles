@@ -1,5 +1,7 @@
 README.md skip
 .ssh recurse
+.atom recurse
+.atom .synergy
 
 install_prezto.sh exec
 install_prezto.sh skip
