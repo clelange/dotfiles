@@ -1,10 +1,13 @@
 #!/bin/zsh
 
+# link already here in case zprezto has been installed by hand
 ln -sf ~/.dotfiles/prompt_clange_setup ~/.zprezto/modules/prompt/functions/prompt_clange_setup
 
 [[ -d ~/.zprezto ]] && exit
 
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+ln -sf ~/.dotfiles/prompt_clange_setup ~/.zprezto/modules/prompt/functions/prompt_clange_setup
 
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
