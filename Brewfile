@@ -1,8 +1,11 @@
-brew "sshfs"
 brew 'wget'
 brew 'pyenv-virtualenv'
 brew 'pyenv-virtualenvwrapper'
 brew "terminal-notifier"
+
+
+tap 'homebrew/fuse'
+brew "sshfs"
 
 
 tap "caskroom/cask"
@@ -44,6 +47,7 @@ cask "coconutbattery"
 cask "atom"
 cask "hammerspoon"
 cask "vivaldi"
+cask "wmail"
 
 
 tap "caskroom/fonts"

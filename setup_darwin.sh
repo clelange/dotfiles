@@ -10,4 +10,9 @@ read \?"Please wait for xcode installation to finish, then press [Enter] to cont
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew bundle Brewfile
+sudo chown -R $(whoami) /usr/local/opt
+sudo chown -R $(whoami) /usr/local/lib/python2.7/site-packages
+# brew link autoconf
+# brew link pkg-config
+
+brew bundle --file=~/.dotfiles/Brewfile
