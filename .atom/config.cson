@@ -1,0 +1,75 @@
+"*":
+  "Sublime-Style-Column-Selection": {}
+  "activate-power-mode":
+    autoToggle: false
+  "atom-beautify":
+    general:
+      _analyticsUserId: "cc2d2384-e72d-4a08-beee-e4f8e68d5821"
+  "autocomplete-plus": {}
+  "autocomplete-python":
+    useKite: false
+  core:
+    disabledPackages: [
+      "atom-ternjs"
+      "color-picker"
+      "git-control"
+      "pigments"
+      "remote-edit"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "*.png"
+      "*.pdf"
+      "*.pyc"
+      "*.so"
+      "**/cfg/VV_*"
+      "**/plots_"
+    ]
+    openEmptyEditorOnStart: false
+    telemetryConsent: "limited"
+    themes: [
+      "atom-dark-syntax"
+    ]
+  editor:
+    invisibles: {}
+    softWrap: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "1ac85620-c91e-b695-695a-12e7663ee7d7"
+  "find-and-replace":
+    caseSensitive: true
+  fonts:
+    fontFamily: "FiraCode"
+  "git-plus":
+    general:
+      _analyticsUserId: "d06e42db-31f1-4296-8eae-11f452f820a6"
+  linter:
+    errorPanelHeight: 171
+  "linter-flake8":
+    maxLineLength: 200
+    pep8ErrorsToWarnings: true
+  minimap:
+    plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  "remote-atom":
+    launch_at_startup: true
+    port: 52699
+  "seti-ui": {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+".diff.source":
+  editor:
+    tabLength: 4
