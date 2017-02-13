@@ -48,6 +48,7 @@ cask "atom"
 cask "hammerspoon"
 cask "vivaldi"
 cask "wmail"
+cask "xquartz"
 
 
 tap "caskroom/fonts"

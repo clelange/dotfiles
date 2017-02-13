@@ -1,0 +1,4 @@
+# ignore installed tokens
+*.installed
+# ignore rmate
+bin/rmate*
