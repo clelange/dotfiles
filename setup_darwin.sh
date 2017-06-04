@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-
 chsh -s $(which zsh)
 
 [[ -f "/usr/local/bin/brew" ]] && echo "Homebrew already installed" && return
@@ -11,17 +10,9 @@ read \?"Please wait for xcode installation to finish, then press [Enter] to cont
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew update
-# for bundle files
-brew tap Homebrew/bundle
-# for ROOT
-brew tap homebrew/science
-# for all kinds of other HEP stuff
-brew tap davidchall/hep
+sudo chown -R $(whoami) /usr/local/opt
+sudo chown -R $(whoami) /usr/local/lib/python2.7/site-packages
+# brew link autoconf
+# brew link pkg-config
 
-brew bundle Brewfile
-
-brew install root6
-# pyenv
-brew install pyenv
-brew install pyenv-virtualenv
+brew bundle --file=~/.dotfiles/Brewfile
