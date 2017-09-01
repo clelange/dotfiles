@@ -3,8 +3,12 @@
   "activate-power-mode":
     autoToggle: false
   "atom-beautify":
+    cpp:
+      configPath: "/Users/clange/uncrustify.cfg"
     general:
       _analyticsUserId: "cc2d2384-e72d-4a08-beee-e4f8e68d5821"
+    python:
+      max_line_length: 200
   "autocomplete-plus": {}
   "autocomplete-python":
     useKite: false
@@ -33,12 +37,13 @@
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
-      "atom-dark-syntax"
+      "atom-dark-ui"
+      "monokai-seti"
     ]
   editor:
     invisibles: {}
+    showInvisibles: true
     softWrap: true
-    tabLength: 4
   "exception-reporting":
     userId: "1ac85620-c91e-b695-695a-12e7663ee7d7"
   "find-and-replace":
@@ -48,12 +53,18 @@
   "git-plus":
     general:
       _analyticsUserId: "d06e42db-31f1-4296-8eae-11f452f820a6"
-  linter:
-    errorPanelHeight: 171
+  kite:
+    showKiteTourOnStatup: false
+  linter: {}
   "linter-flake8":
-    maxLineLength: 200
+    maxLineLength: 500
     pep8ErrorsToWarnings: true
+  "linter-pycodestyle":
+    maxLineLength: 500
+  "linter-ui-default":
+    showPanel: true
   minimap:
+    adjustAbsoluteModeHeight: true
     plugins:
       cursorline: true
       cursorlineDecorationsZIndex: 0
@@ -70,6 +81,12 @@
     hideIgnoredNames: true
   welcome:
     showOnStartup: false
+".c.source":
+  editor:
+    tabLength: 2
+".cpp.source":
+  editor:
+    tabLength: 2
 ".diff.source":
   editor:
     tabLength: 4

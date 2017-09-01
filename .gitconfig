@@ -33,6 +33,12 @@
 	rbio = rebase -i origin/master
 	t = tag -a
 	tl = tag -ln1
+	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+	today = log --since=00:00:00 --all --no-merges --oneline
+	upstream = log --oneline --no-merges HEAD..origin/master
+	local = log --oneline --no-merges origin/master..HEAD
+	pr = "!f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+	pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format=\"%(refname)\" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [core]
 	editor = vim
 	autocrlf = false
@@ -57,9 +63,11 @@
 	required = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/clange/.stCommitMsg
+[http]
+	emptyAuth = true

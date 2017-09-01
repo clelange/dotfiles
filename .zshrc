@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# git shell completion
+zstyle ':completion:*:*:git:*' script ~/bin/git-completion.zsh
+
 # Customize to your needs...
 export EDITOR="/usr/local/bin/mate -w"
 export VISUAL=$EDITOR
@@ -35,8 +38,9 @@ alias cmsnafSLC5="ssh -Y nafhh-cms01.desy.de"
 alias atlnaf2="ssh -Y nafhh-atlas01.desy.de"
 alias pixcr="ssh -Y pc4634.cern.ch"
 alias libsvn="ssh -Y libuzhcm@lxplus.cern.ch"
+# alias myscp="rsync -e \"ssh -c arcfour -o Compression=no\" -avzP"
 alias myscp="rsync -avzP"
-alias iniroot="cd /usr/root/current; source bin/thisroot.sh; cd -"
+alias iniroot="pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null"
 alias wakedge="wakeonlan f8:b1:56:bf:42:12"
 # pixel PCs
 alias bpix="ssh -Y vmepc-s2b18-07-01.cms"
@@ -47,6 +51,8 @@ alias superpix="ssh -Y srv-s2b18-10-01.cms"
 alias diskpix="ssh -Y srv-c2f38-16-01.cms"
 alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
 alias iniconda2="export PATH=/Users/clange/anaconda2/bin:$PATH"
+alias scp='/usr/bin/scp -S /usr/local/bin/ssh'
+alias sftp='/usr/bin/sftp -S /usr/local/bin/ssh'
 
 # synergy
 function synergyhost {
@@ -62,8 +68,15 @@ function synergyhost {
 pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
 # pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+export WORKON_HOME=~/.ve
+export PROJECT_HOME=~/CloudStation/python_workspace
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# use either pyenv-virtualenv or virtualenvwrapper
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+source /usr/local/bin/virtualenvwrapper.sh
+pyenv virtualenvwrapper_lazy
+
+
 
 # single window mode
 singleWindowOn="defaults write com.apple.dock single-app -bool true; killall Dock"
@@ -84,7 +97,8 @@ function gpip(){
 
 function playmidi {
 
-    SOUNDFONT='/usr/local/share/fluidsynth/generaluser.v.1.44.sf2'
+    SOUNDFONT='/usr/local/share/fluidsynth/generaluser.v.1.471.sf2'
+    # SOUNDFONT='/usr/local/share/fluidsynth/generaluser.v.1.44.sf2'
 
     if [ -e "$SOUNDFONT" ]
     then
@@ -110,6 +124,8 @@ export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr
 
 . $HOME/.shellrc.load
 
+export MAGICK_HOME=/usr/local/Cellar/imagemagick@6/6.9.9-7
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 function voms() {
@@ -129,3 +145,9 @@ stt_tab   () { setTerminalText 1 $@; }
 stt_title () { setTerminalText 2 $@; }
 
 stt_tab
+
+PATH="/Users/clange/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/clange/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/clange/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/clange/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/clange/perl5"; export PERL_MM_OPT;

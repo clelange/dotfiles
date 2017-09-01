@@ -33,8 +33,9 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'prompt' \
-	'history-substring-search' \
-	'git'
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'git'
 
 #
 # Autosuggestions
@@ -66,6 +67,9 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+# Disable safe rm/cp/mv operations
+zstyle ':prezto:module:utility' safe-ops 'no'
 
 #
 # History Substring Search
@@ -145,7 +149,7 @@ zstyle ':prezto:module:prompt' theme 'clange'
 #
 
 # Auto set the tab and window titles.
-# zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
 # zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
