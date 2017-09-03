@@ -3,11 +3,6 @@ brew 'pyenv-virtualenv'
 brew 'pyenv-virtualenvwrapper'
 brew "terminal-notifier"
 
-
-tap 'homebrew/fuse'
-brew "sshfs"
-
-
 tap "caskroom/cask"
 cask_args appdir: '/Applications'
 # Browsers
@@ -17,7 +12,7 @@ cask "vivaldi"
 # File sharing
 cask "dropbox"
 cask "resilio-sync"
-cask "synology-cloud-station-drive"
+cask "synology-cloud-station"
 cask "insync"
 # Messengers/Mail
 cask "adium"
@@ -47,12 +42,15 @@ cask "qbserve"
 cask "quitter"
 cask "coconutbattery"
 # Development
+cask "iterm2"
 cask "docker"
 cask "deltawalker"
 cask "dash"
 cask "pycharm-edu"
 cask "xquartz"
 cask "osxfuse"
+tap 'homebrew/fuse'
+brew "sshfs"
 cask "texstudio"
 cask "devonthink-pro"
 cask "paw"
@@ -69,4 +67,4 @@ cask "font-hack"
 cask "font-fira-code"
 
 tap 'homebrew/science'
-brew 'homebrew/science/root6'
+brew 'root'
