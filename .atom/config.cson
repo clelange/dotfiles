@@ -7,11 +7,12 @@
       configPath: "/Users/clange/uncrustify.cfg"
     general:
       _analyticsUserId: "cc2d2384-e72d-4a08-beee-e4f8e68d5821"
-    python:
-      max_line_length: 200
+    python: {}
   "autocomplete-plus": {}
   "autocomplete-python":
     useKite: false
+  "bracket-matcher":
+    highlightMatchingLineNumber: true
   core:
     disabledPackages: [
       "atom-ternjs"
@@ -19,6 +20,7 @@
       "git-control"
       "pigments"
       "remote-edit"
+      "linter"
     ]
     ignoredNames: [
       ".git"
@@ -37,10 +39,11 @@
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
-      "atom-dark-ui"
-      "monokai-seti"
+      "one-dark-ui"
+      "cobalt2-syntax"
     ]
   editor:
+    fontSize: 16
     invisibles: {}
     showInvisibles: true
     softWrap: true
@@ -53,6 +56,10 @@
   "git-plus":
     general:
       _analyticsUserId: "d06e42db-31f1-4296-8eae-11f452f820a6"
+  "ide-python":
+    pylsPlugins:
+      pycodestyle:
+        enabled: false
   kite:
     showKiteTourOnStatup: false
   linter: {}
@@ -62,6 +69,7 @@
   "linter-pycodestyle":
     maxLineLength: 500
   "linter-ui-default":
+    panelHeight: 166
     showPanel: true
   minimap:
     adjustAbsoluteModeHeight: true

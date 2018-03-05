@@ -25,8 +25,7 @@ bindkey "^I" expand-or-complete-with-dots
 
 # alias definitions
 # alias ssh="ln -fs $(echo $DISPLAY | sed 's:\(/private/tmp/com\.apple\.launchd\.[^/]*\)/.*:\1:') $(echo $DISPLAY | sed 's:/private/tmp/com\.apple\.launchd\.\([^/]*\)/.*:/private/tmp/launch-\1:'); ssh -Y"
-alias lxplus="ssh -Y lxplus.cern.ch"
-alias lxplus5="ssh -Y lxplus5.cern.ch"
+alias lxplus="/Users/clange/autoKerb/ssh -Y -F ~/.ssh/config_kerb lxplus.cern.ch"
 alias psi15="ssh -Y t3ui15.psi.ch"
 alias psi="ssh -Y t3ui03.psi.ch"
 alias bastion="ssh -Y bastion.desy.de"
@@ -40,7 +39,8 @@ alias pixcr="ssh -Y pc4634.cern.ch"
 alias libsvn="ssh -Y libuzhcm@lxplus.cern.ch"
 # alias myscp="rsync -e \"ssh -c arcfour -o Compression=no\" -avzP"
 alias myscp="rsync -avzP"
-alias iniroot="pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null"
+alias iniroot="pushd $(brew --prefix root6) >/dev/null; . bin/thisroot.sh; popd >/dev/null; echo use pyroot"
+alias pyroot="/usr/local/bin/python2.7"
 alias wakedge="wakeonlan f8:b1:56:bf:42:12"
 # pixel PCs
 alias bpix="ssh -Y vmepc-s2b18-07-01.cms"
@@ -53,6 +53,7 @@ alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
 alias iniconda2="export PATH=/Users/clange/anaconda2/bin:$PATH"
 alias scp='/usr/bin/scp -S /usr/local/bin/ssh'
 alias sftp='/usr/bin/sftp -S /usr/local/bin/ssh'
+alias rmate='atom'
 
 # synergy
 function synergyhost {
@@ -65,7 +66,7 @@ function synergyhost {
 # for ROOT5
 # pushd $(brew --prefix root) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 # for ROOT6
-pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
+pushd $(brew --prefix root6) >/dev/null; . bin/thisroot.sh; popd >/dev/null
 
 # pyenv
 export WORKON_HOME=~/.ve
@@ -76,7 +77,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 source /usr/local/bin/virtualenvwrapper.sh
 pyenv virtualenvwrapper_lazy
 
-
+# set up z
+. /usr/local/etc/profile.d/z.sh
 
 # single window mode
 singleWindowOn="defaults write com.apple.dock single-app -bool true; killall Dock"
@@ -124,7 +126,7 @@ export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr
 
 . $HOME/.shellrc.load
 
-export MAGICK_HOME=/usr/local/Cellar/imagemagick@6/6.9.9-7
+export MAGICK_HOME=$(brew --prefix imagemagick@6)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -133,6 +135,10 @@ function voms() {
   VOMSPROXY=`voms-proxy-info -path`
   cp $VOMSPROXY $HOME/`basename $VOMSPROXY`
   export X509_USER_PROXY=$HOME/`basename $VOMSPROXY`
+}
+
+function ql() {
+  qlmanage -p "$@" >& /dev/null &
 }
 
 setTerminalText () {
@@ -145,6 +151,8 @@ stt_tab   () { setTerminalText 1 $@; }
 stt_title () { setTerminalText 2 $@; }
 
 stt_tab
+
+# export PATH=/Users/clange/autoKerb:${PATH}
 
 PATH="/Users/clange/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/clange/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
