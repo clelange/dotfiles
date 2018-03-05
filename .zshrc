@@ -39,7 +39,7 @@ alias pixcr="ssh -Y pc4634.cern.ch"
 alias libsvn="ssh -Y libuzhcm@lxplus.cern.ch"
 # alias myscp="rsync -e \"ssh -c arcfour -o Compression=no\" -avzP"
 alias myscp="rsync -avzP"
-alias iniroot="pushd $(brew --prefix root6) >/dev/null; . bin/thisroot.sh; popd >/dev/null; echo use pyroot"
+alias iniroot="pushd $(brew --prefix root) >/dev/null; . bin/thisroot.sh; popd >/dev/null; echo use pyroot"
 alias pyroot="/usr/local/bin/python2.7"
 alias wakedge="wakeonlan f8:b1:56:bf:42:12"
 # pixel PCs
@@ -66,7 +66,7 @@ function synergyhost {
 # for ROOT5
 # pushd $(brew --prefix root) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 # for ROOT6
-pushd $(brew --prefix root6) >/dev/null; . bin/thisroot.sh; popd >/dev/null
+pushd $(brew --prefix root) >/dev/null; . bin/thisroot.sh; popd >/dev/null
 
 # pyenv
 export WORKON_HOME=~/.ve
