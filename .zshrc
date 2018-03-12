@@ -39,8 +39,7 @@ alias pixcr="ssh -Y pc4634.cern.ch"
 alias libsvn="ssh -Y libuzhcm@lxplus.cern.ch"
 # alias myscp="rsync -e \"ssh -c arcfour -o Compression=no\" -avzP"
 alias myscp="rsync -avzP"
-alias iniroot="pushd $(brew --prefix root) >/dev/null; . bin/thisroot.sh; popd >/dev/null; echo use pyroot"
-alias pyroot="/usr/local/bin/python2.7"
+alias iniroot="pushd $(brew --prefix root) >/dev/null; . bin/thisroot.sh; popd >/dev/null; echo use python3"
 alias wakedge="wakeonlan f8:b1:56:bf:42:12"
 # pixel PCs
 alias bpix="ssh -Y vmepc-s2b18-07-01.cms"
@@ -122,7 +121,7 @@ function playmidi {
 }
 
 # Customize to your needs...
-export PATH=${PATH}:/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$HOME/cms-git-tools
+export PATH=/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$HOME/cms-git-tools:/usr/local/opt/python@2/bin:${PATH}
 
 . $HOME/.shellrc.load
 
