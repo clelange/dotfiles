@@ -18,7 +18,6 @@ cask "insync"
 cask "adium"
 cask "skype"
 cask "franz"
-cask "wavebox"
 # Comfort
 cask "1password"
 cask "flux"
