@@ -2,6 +2,9 @@ brew 'wget'
 brew 'pyenv-virtualenv'
 brew 'pyenv-virtualenvwrapper'
 brew "terminal-notifier"
+brew "task"
+brew "tasksh"
+brew "taskd"
 
 tap "caskroom/cask"
 cask_args appdir: '/Applications'
@@ -53,13 +56,17 @@ brew "sshfs"
 cask "texstudio"
 cask "devonthink-pro"
 cask "paw"
+cask "mactex"
+cask "atom"
+cask "visual-studio-code"
 # Others
 cask "vlc"
 cask "mediathekview"
-cask "atom"
 cask "spotify"
 # cask "things"
 cask "tunnelblick"
+cask "pliim"
+cask "flycut"
 cask "imageoptim"
 # screen recording
 cask "kap"
@@ -68,5 +75,4 @@ tap "caskroom/fonts"
 cask "font-hack"
 cask "font-fira-code"
 
-tap 'homebrew/science'
 brew 'root'

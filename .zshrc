@@ -49,7 +49,7 @@ alias anapix="ssh -Y srv-c2f38-15-01.cms"
 alias superpix="ssh -Y srv-s2b18-10-01.cms"
 alias diskpix="ssh -Y srv-c2f38-16-01.cms"
 alias cmsusr="ssh cmsusr -D 10500 -L 5555:srv-c2f38-15-01.cms:22"
-alias iniconda2="export PATH=/Users/clange/anaconda2/bin:$PATH"
+# alias iniconda2="export PATH=/Users/clange/anaconda2/bin:$PATH"
 alias scp='/usr/bin/scp -S /usr/local/bin/ssh'
 alias sftp='/usr/bin/sftp -S /usr/local/bin/ssh'
 alias rmate='atom'
@@ -74,7 +74,11 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # use either pyenv-virtualenv or virtualenvwrapper
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 source /usr/local/bin/virtualenvwrapper.sh
-pyenv virtualenvwrapper_lazy
+if which pyenv > /dev/null; then pyenv virtualenvwrapper_lazy; fi
+# eval "$(pyenv virtualenv-init -)"
+
+# python autocompletion and history
+export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 # set up z
 . /usr/local/etc/profile.d/z.sh
@@ -120,8 +124,39 @@ function playmidi {
     fi
 }
 
+midi2mp3 () {
+  SOUNDFONT='/usr/local/share/fluidsynth/generaluser.v.1.471.sf2'
+
+  if [[ ! -f $SOUNDFONT ]]
+  then
+    echo "Couldn't find the soundfont: $SOUNDFONT"
+    return 1
+  fi
+
+  if [ "$#" -eq 0 ]
+  then
+    echo "usage: midi2mp3 file1.mid [file2.mid, file3.mid, ...]"
+    return 0
+  else
+    for filename in "$@"
+    do
+      echo "${filename}"
+      WAVFILE="$TMPDIR/${filename%.*}"
+
+      fluidsynth -F "${WAVFILE}" $SOUNDFONT "${filename}" && \
+        lame "${WAVFILE}" && \
+        rm "${WAVFILE}"
+    done
+  fi
+}
+
 # Customize to your needs...
-export PATH=/usr/local/texlive/2015/bin/x86_64-darwin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$HOME/cms-git-tools:/usr/local/opt/python@2/bin:${PATH}
+# export PATH=/Users/clange/.pyenv/versions/3.6.5/Python.framework/Versions/Current/bin:${PATH}
+# pipsi
+export PATH=/Users/clange/.local/bin:$PATH
+# for pipenv to work
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 . $HOME/.shellrc.load
 
