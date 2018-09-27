@@ -58,8 +58,11 @@ cask "vlc"
 cask "mediathekview"
 cask "atom"
 cask "spotify"
-cask "things"
+# cask "things"
 cask "tunnelblick"
+cask "imageoptim"
+# screen recording
+cask "kap"
 
 tap "caskroom/fonts"
 cask "font-hack"
