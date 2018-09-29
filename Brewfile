@@ -70,6 +70,7 @@ cask "flycut"
 cask "imageoptim"
 # screen recording
 cask "kap"
+cask "sidestep"
 
 tap "caskroom/fonts"
 cask "font-hack"
